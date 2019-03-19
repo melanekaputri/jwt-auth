@@ -11,12 +11,12 @@
                             <nuxt-link class="nav-link" to="/dashboard">Dashboard</nuxt-link>
                         </li>
                     </b-navbar-nav>
-                     <b-navbar-nav class="ml-auto">
+                    <b-navbar-nav class="ml-auto">
                         <li class="nav-item">
                             <nuxt-link class="nav-link" to="/dashboard">Login</nuxt-link>
                         </li>
                         <li class="nav-item">
-                            <nuxt-link class="nav-link" to="/dashboard">Register</nuxt-link>
+                            <nuxt-link class="nav-link" to="/auth/register">Register</nuxt-link>
                         </li>
                     </b-navbar-nav>
                 </b-collapse>

@@ -32,8 +32,27 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-  ],
+  plugins: [],
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            url : 'auth/login', method: 'post', propertyName: 'token'
+          },
+          user: {
+            url: 'me', method: 'get', propertyName: 'data'
+          },
+          logout: 'logout', method: 'get'
+        }
+      }
+    },
+    redirect: {
+      login: '/auth/login',
+      home: '/'
+    }
+  },
 
   /*
   ** Nuxt.js modules
@@ -43,12 +62,15 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+
+    '@nuxtjs/auth'
   ],
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL : "http://localhost:3000/api"
   },
 
   /*
@@ -58,6 +80,8 @@ export default {
     /*
     ** You can extend webpack config here
     */
+
+    extractCSS: true,
     extend(config, ctx) {
     }
   }
