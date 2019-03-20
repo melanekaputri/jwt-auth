@@ -23,6 +23,12 @@ export default {
   */
   loading: { color: '#fff' },
 
+  router: {
+    middleware: [
+      'clearValidationErrors'
+    ]
+  },
+
   /*
   ** Global CSS
   */
@@ -32,7 +38,10 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    './plugins/mixins/validation',
+    './plugins/axios'
+  ],
 
   auth: {
     strategies: {
@@ -58,12 +67,10 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
-
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'bootstrap-vue/nuxt'
+    
   ],
   /*
   ** Axios module configuration
