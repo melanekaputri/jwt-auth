@@ -29,7 +29,7 @@
                             </div>
                         </div>
                          <div class="form-group">
-                            <input type="submit" value="Register" class="btn btn-primary w-100">
+                            <input type="submit" value="Register" class="btn btn-default w-100">
                          </div>
                     </form>
                 </div>
@@ -40,6 +40,7 @@
 
 <script>
 export default {
+    middleware: 'guest',
     data() {
         return {
             form: {
@@ -51,13 +52,9 @@ export default {
     },
     methods: {
         async register() {
-            
             await this.$axios.post('/auth/register', this.form);
-
             this.$auth.login({data: this.form});
-
             this.$router.push({name: 'index'});
-            
         }
     }
 }

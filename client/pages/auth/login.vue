@@ -22,7 +22,7 @@
                             </div>
                         </div>
                          <div class="form-group">
-                            <input type="submit" value="Login" class="btn btn-primary w-100">
+                            <input type="submit" value="Login" class="btn btn-dafult w-100">
                          </div>
                     </form>
                 </div>
@@ -33,9 +33,11 @@
 
 <script>
 export default {
+    middleware: 'guest',
     data() {
         return {
             form: {
+             
                 email: '',
                 password: ''
             }
@@ -43,11 +45,13 @@ export default {
     },
     methods: {
         async login() {
-            await this.$auth.login({ data: this.form});
-
-            this.$router.push({ name: 'index'});
             
+
+            await this.$auth.login({data: this.form});
+
+            this.$router.push(this.$route.query.redirect ? this.$route.query.redirect : '/');
         }
+
     }
 }
 </script>

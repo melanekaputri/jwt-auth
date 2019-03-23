@@ -1,6 +1,7 @@
-import pkg from './package'
+const pkg = require('./package')
 
-export default {
+
+module.exports = {
   mode: 'universal',
 
   /*
@@ -25,9 +26,9 @@ export default {
 
   router: {
     middleware: [
-      'clearValidationErrors'
+    'clearValidationErrors'
     ]
-  },
+    },
 
   /*
   ** Global CSS
@@ -40,29 +41,37 @@ export default {
   */
   plugins: [
     './plugins/mixins/validation',
+    './plugins/mixins/user',
     './plugins/axios'
   ],
 
   auth: {
     strategies: {
-      local: {
-        endpoints: {
-          login: {
-            url : 'auth/login', method: 'post', propertyName: 'token'
-          },
-          user: {
-            url: 'me', method: 'get', propertyName: 'data'
-          },
-          logout: 'logout', method: 'get'
-        }
-      }
+    local: {
+    endpoints: {
+    login: {
+    url:'auth/login', method: 'post', propertyName: 'token'
+    },
+    user : {
+    url: 'me', method: 'get', propertyName: 'data'
+    },
+    logout: {
+    url:'auth/logout', 
+    method: 'get'
+    }
+    }
+    }
     },
     redirect: {
-      login: '/auth/login',
-      home: '/'
-    }
-  },
+    login: '/auth/login',
+    home: '/'
+    },
+    plugins: [
+      './plugins/auth'
+    ]
+    },
 
+  
   /*
   ** Nuxt.js modules
   */
@@ -70,14 +79,15 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     'bootstrap-vue/nuxt'
-    
   ],
+
+  
   /*
-  ** Axios module configuration
+  ** Axios Module Configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL : "http://localhost:3000/api"
+    baseURL: "http://127.0.0.1:8000/api"
   },
 
   /*
@@ -87,9 +97,9 @@ export default {
     /*
     ** You can extend webpack config here
     */
-
     extractCSS: true,
     extend(config, ctx) {
+      
     }
   }
 }

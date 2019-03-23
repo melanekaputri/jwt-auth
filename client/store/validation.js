@@ -1,6 +1,6 @@
 export const state = () => ({
     errors: {}
-}); 
+});
 
 export const getters = {
     errors(state) {
@@ -8,8 +8,8 @@ export const getters = {
     }
 };
 
-export const mutations = {
-    SET_VALIDATION_ERRORS(state, errors){
+export  const mutations = {
+    SET_VALIDATION_ERRORS(state, errors) {
         state.errors = errors;
     }
 };

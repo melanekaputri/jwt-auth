@@ -16,7 +16,10 @@
     "bootstrap-vue": "^2.0.0-rc.11",
     "cross-env": "^5.2.0",
     "nuxt": "^2.4.0",
-    "vue": "^2.6.9"
+    "vue": "^2.6.9",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.9"

@@ -1,9 +1,11 @@
 <template>
     <div class="container">
-        <h1>Welcome to the dashboard</h1>
+        <h1>Welcome to your dashboard {{user.name}}</h1>
     </div>
 </template>
 
 <script>
-export default {}
+export default {
+    middleware: 'auth'
+};
 </script>
